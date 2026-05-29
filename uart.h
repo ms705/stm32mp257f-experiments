@@ -1,7 +1,10 @@
 #ifndef STM32MP2_UART_H
 #define STM32MP2_UART_H
 
+
 #include <stdint.h>
+#include "base.h"
+//#include "board.h"
 
 /* * STM32MP257 UART Register Map Structure
  * Based on standard STM32 USART IP (V2/V3)
@@ -21,14 +24,16 @@ typedef struct {
   volatile uint32_t PRESC; /* Prescaler Register */
 } USART_TypeDef;
 
-/* Memory Base Address for UART4 (Common Console on DK boards)
- * Note: Verify specific bus address in STM32MP2 reference manual.
- */
-#define UART4_BASE 0x40100000UL
+//Memory Base Address for UART4 (Common Console on DK boards)
+// * Note: Verify specific bus address in STM32MP2 reference manual.
+//#define UART4_BASE 0x40100000UL
+//#define UART5_BASE 0x40110000UL
 #define UART4 ((USART_TypeDef *)UART4_BASE)
+#define UART5 ((USART_TypeDef *)UART5_BASE)
 
 /* Bit Definitions */
-#define USART_CR1_UE (1 << 0)      /* USART Enable */
+#define USART_CR1_UE (1 << 0) /* USART Enable */
+#define USART_CR1_UESM (1 << 1)      /* Enabled during LPM */
 #define USART_CR1_RE (1 << 2)      /* Receiver Enable */
 #define USART_CR1_TE (1 << 3)      /* Transmitter Enable */
 #define USART_CR1_M0 (1 << 12)     /* Word length - Bit 0 */

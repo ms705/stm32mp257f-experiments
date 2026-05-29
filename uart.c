@@ -37,7 +37,7 @@ void uart_init(USART_TypeDef *uart, uint32_t clock_freq_hz,
   memory_barrier();
 
   /* 7. Enable FIFO (Optional but recommended for A35 performance) */
-  uart->CR1 |= USART_CR1_FIFOEN;
+  //uart->CR1 |= USART_CR1_FIFOEN;
 
   /* 8. Enable Transmitter (TE) and Receiver (RE) */
   uart->CR1 |= (USART_CR1_TE | USART_CR1_RE);
@@ -59,7 +59,7 @@ void uart_putc(USART_TypeDef *uart, char c) {
   uart->TDR = (uint8_t)c;
 
   /* Ensure the write occurs before continuing */
-  memory_barrier();
+  //memory_barrier();
 }
 
 char uart_getc(USART_TypeDef *uart) {
